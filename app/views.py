@@ -1,18 +1,18 @@
-import asyncio
-
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 
 from app.models import ModelReg
 
+
 @csrf_exempt
 def index(request):
-    if request.method == 'POST':pass
-       # asyncio.run(main()) #запуск бота
+    if request.method == 'POST': pass
     return render(request, 'index.html')
 
-user_info = {"":False}
+
+user_info = {"": False}
+
 
 @csrf_exempt
 def register(request):
@@ -29,14 +29,15 @@ def register(request):
         return HttpResponse(f'Пользователь с Email: {reg.email} успешно зарегистрирован!')
     return render(request, 'register.html')
 
+
 @csrf_exempt
 def login(request):
     if request.method == 'POST':
         data = ModelReg.objects.all()
         print(data)
-        print(f"Из пост запроса. Почта: {request.POST['login']} Pass: {request.POST['password']}")
+        print(f"Из пост запроса. Имя пользователя: {request.POST['login']} Пароль: {request.POST['password']}")
         for i in data:
-            print(f'Текущий объект из базы данных. Почта: {i.login} Pass: {i.password}')
+            print(f'Текущий объект из базы данных. Имя пользователя: {i.login} Пароль: {i.password}')
             if request.POST['login'] == i.login and request.POST['password'] == i.password:
                 user_login = request.POST['login']
                 user_info[user_login] = True
@@ -55,6 +56,8 @@ def profile(request):
         html.delete_cookie('isAuth')
         return html
     r = ''
-    try: r = request.COOKIES['isAuth']
-    except: return redirect('/')
-    return render(request, 'profile.html', {'user_login':request.COOKIES['isAuth']})
+    try:
+        r = request.COOKIES['isAuth']
+    except:
+        return redirect('/')
+    return render(request, 'profile.html', {'user_login': request.COOKIES['isAuth']})
