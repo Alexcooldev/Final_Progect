@@ -22,9 +22,9 @@
         position: absolute;
         left: 49vw;
         top: 20vh;
-        height: 35vh;
+        height: 34vh;
         width: 10vw;
-        border-radius: 2vw;
+        border-radius: 4vw;
     }
     button {
         position: absolute;
@@ -37,8 +37,20 @@
         border-radius: 30vw;
         cursor: pointer;
     }
+    p {
+            font-family:Webdings;
+            display: flex;
+            justify-content: center;
+            color: chocolate;
+            font-size: 35px;
+            margin-top: 40px;
+            text-decoration: underline;
+            text-shadow: red 2px 2px 6px;
+            text-transform: uppercase;
+        }
 </style>
-<img src="https://pbs.twimg.com/media/DANeXB_UQAA5WzT.jpg:large">
+<p>Это страница Вашего профиля</p>
+<img src="https://firebasestorage.googleapis.com/v0/b/bottelega-f75ea.appspot.com/o/Eto.jpg?alt=media&token=bed10c7c-2e6e-4e35-b7f7-05f6fef8ec13">
 <div class="d1">Ваше имя: {{ user_login }}</div>
 <form action="" method="post"><button>Выйти</button></form>
 </body>
